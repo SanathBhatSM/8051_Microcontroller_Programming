@@ -1,0 +1,22 @@
+;ALP to generate a staircase waveform
+
+	MOV A,#00H
+L1:	MOV P1,A
+	ACALL DELAY
+	ADD A,#33H
+	CJNE A,#0FFH,L1
+L2:	MOV P1,A
+	ACALL DELAY
+	SUBB A,#33H
+	CJNE A,#00H,L2
+	SJMP L1
+	
+	
+DELAY:
+	MOV R1,#0FFH
+L5:	MOV R2,#0FFH
+L3:	DJNZ R2,L3
+	DJNZ R1,L5
+	
+	RET
+	END

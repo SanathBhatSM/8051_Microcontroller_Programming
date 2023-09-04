@@ -1,0 +1,17 @@
+;COde Conversion- Decimal to Hexadecimal
+
+MOV DPTR,#9000H
+MOVX A,@DPTR
+MOV B,A
+ANL A,#0FH
+MOV R1,A
+MOV A,B
+ANL A,#0F0H
+SWAP A
+MOV B,#0AH
+MUL AB
+ADD A,R1
+INC DPTR
+MOVX @DPTR,A
+SJMP $
+END
